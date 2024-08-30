@@ -1,11 +1,11 @@
-# Deploy MLFlask App Via Azure WebApp
+# Deploy ML Flask App Via Azure WebApp
 
 
 
 ```markdown
 # Flask ML Application Deployment to Azure
 
-This repository contains a Flask-based machine learning (ML) application that is deployed to Azure using GitHub Actions. This guide will help you set up and automate the deployment process.
+This repository contains a Flask-based machine learning (ML) application that is deployed to Azure Web App. This guide will help you set up and automate the deployment process.
 
 ## Azure Setup & Prerequisites
 
