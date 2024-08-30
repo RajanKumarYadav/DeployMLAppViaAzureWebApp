@@ -7,15 +7,18 @@
 
 This repository contains a Flask-based machine learning (ML) application that is deployed to Azure using GitHub Actions. This guide will help you set up and automate the deployment process.
 
-## Prerequisites
+## Azure Setup & Prerequisites
 
-- **Azure Account**: Create an Azure account if you don't have one.
-- **GitHub Repository**: Your Flask application should be in a GitHub repository.
-- **Azure CLI**: Install the Azure CLI on your local machine.
+- Azure Account: Create an Azure account if you don't have one.
+- GitHub Repository: Your Flask application should be in a GitHub repository.
+- Create Resource Group: Create your Resource Group
+- Create Container Registry: For Holding Docker Images
+- Go to Resources, Find Access Key, Enable Admin User and Copy password
+- Create Web App: Publish -> Choose Container -> Change Image Source to Azure Container Registry (Follow this step After Pushing the Image) 
 
 ## Application Setup
 
-1. **Flask Application**: Ensure you have a Flask application with a `requirements.txt` for dependencies.
+1. Flask Application: Ensure you have a Flask application with a `requirements.txt` for dependencies.
 
    Example directory structure:
    ```
@@ -26,7 +29,7 @@ This repository contains a Flask-based machine learning (ML) application that is
    └── .gitignore
    ```
 
-2. **Dockerize Your Application**: Create a `Dockerfile` for containerizing your Flask application.
+2. Dockerize Your Application: Create a `Dockerfile` for containerizing your Flask application.
 
    Example `Dockerfile`:
    ```Dockerfile
@@ -42,29 +45,17 @@ This repository contains a Flask-based machine learning (ML) application that is
    CMD ["gunicorn", "-b", "0.0.0.0:80", "app:app"]
    ```
 
-## Azure Setup
+3. Create Docker image and Push to Azure Container Repository
+  ```
+  docker build -t bitscontainerregistry.azurecr.io/diabetes_prediction_app:latest .
 
-1. **Create a Resource Group**:
-   ```bash
-   az group create --name myResourceGroup --location eastus
-   ```
+  docker login bitscontainerregistry.azurecr.io
 
-2. **Create an Azure Container Registry (ACR)**:
-   ```bash
-   az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
-   ```
+  docker push bitscontainerregistry.azurecr.io/diabetes_prediction_app:latest
 
-3. **Create an Azure Web App for Containers**:
-   ```bash
-   az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name myFlaskApp --deployment-container-image-name myContainerRegistry.azurecr.io/my-flask-app:latest
-   ```
 
-4. **Configure ACR Authentication**:
-   ```bash
-   az webapp config container set --resource-group myResourceGroup --name myFlaskApp --docker-custom-image-name myContainerRegistry.azurecr.io/my-flask-app:latest --docker-registry-server-url https://myContainerRegistry.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
-   ```
+  ```
 
-   Get the `username` and `password` from the Azure portal under the ACR's Access Keys.
 
 ## GitHub Actions Setup
 
