@@ -26,11 +26,12 @@ This repository contains a Flask-based machine learning (ML) application that is
 
 3. Create Docker image and Push to Azure Container Repository
 
-  ```bash
+```bash
   docker build -t bitscontainerregistry.azurecr.io/diabetes_prediction_app:latest .
-
-
+```
+```bash
   docker login bitscontainerregistry.azurecr.io
-
+```
+```bash
   docker push bitscontainerregistry.azurecr.io/diabetes_prediction_app:latest
-  ```
+```
