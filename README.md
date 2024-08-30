@@ -55,57 +55,7 @@ This repository contains a Flask-based machine learning (ML) application that is
 1. **Create GitHub Action Workflow**:
 
    In your GitHub repository, create a directory `.github/workflows` if it doesn’t exist. Inside it, create a file `deploy.yml`.
-
-   Example `deploy.yml`:
-   ```yaml
-   name: Build and Deploy Flask App
-
-   on:
-     push:
-       branches:
-         - main
-
-   jobs:
-     build:
-       runs-on: ubuntu-latest
-
-       steps:
-         - name: Checkout code
-           uses: actions/checkout@v3
-
-         - name: Set up Python
-           uses: actions/setup-python@v4
-           with:
-             python-version: 3.9
-
-         - name: Install dependencies
-           run: |
-             python -m pip install --upgrade pip
-             pip install -r requirements.txt
-
-         - name: Build Docker image
-           run: |
-             docker build . -t my-flask-app
-
-         - name: Log in to Azure Container Registry
-           uses: azure/docker-login@v1
-           with:
-             login-server: myContainerRegistry.azurecr.io
-             username: ${{ secrets.ACR_USERNAME }}
-             password: ${{ secrets.ACR_PASSWORD }}
-
-         - name: Push Docker image to ACR
-           run: |
-             docker tag my-flask-app myContainerRegistry.azurecr.io/my-flask-app:latest
-             docker push myContainerRegistry.azurecr.io/my-flask-app:latest
-
-         - name: Deploy to Azure Web App
-           uses: azure/webapps-deploy@v2
-           with:
-             app-name: myFlaskApp
-             slot-name: production
-             images: myContainerRegistry.azurecr.io/my-flask-app:latest
-   ```
+   Or Create using Azure Deployment Centre
 
 2. **Configure GitHub Secrets**:
 
