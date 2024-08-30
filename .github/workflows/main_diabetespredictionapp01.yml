@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: bitscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_82fa8f04769b4a20bd78d95f359cc030 }}/diabetes_prediction_app:latest
+        tags: bitscontainerregistry.azurecr.io/BITSContainerRegistry/diabetes_prediction_app:latest
         file: ./Dockerfile
 
   deploy:
