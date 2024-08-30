@@ -55,7 +55,7 @@ This repository contains a Flask-based machine learning (ML) application that is
 1. **Create GitHub Action Workflow**:
 
    In your GitHub repository, create a directory `.github/workflows` if it doesn’t exist. Inside it, create a file `deploy.yml`.
-   Or Create using Azure Deployment Centre
+   Or Create using Azure Deployment Centre and choose proper repository
 
 2. **Configure GitHub Secrets**:
 
