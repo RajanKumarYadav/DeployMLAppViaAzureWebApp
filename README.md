@@ -14,20 +14,13 @@ This repository contains a Flask-based machine learning (ML) application that is
 - Create Resource Group: Create your Resource Group
 - Create Container Registry: For Holding Docker Images
 - Go to Resources, Find Access Key, Enable Admin User and Copy password
-- Create Web App: Publish -> Choose Container -> Change Image Source to Azure Container Registry (Follow this step After Pushing the Image) 
+
+- Follow below step After Pushing the Image
+- Create Web App: Publish -> Choose Container -> Change Image Source to Azure Container Registry  
 
 ## Application Setup
 
 1. Flask Application: Ensure you have a Flask application with a `requirements.txt` for dependencies.
-
-   Example directory structure:
-   ```
-   my_flask_app/
-   ├── app.py
-   ├── requirements.txt
-   ├── Dockerfile
-   └── .gitignore
-   ```
 
 2. Dockerize Your Application: Create a `Dockerfile` for containerizing your Flask application.
 
