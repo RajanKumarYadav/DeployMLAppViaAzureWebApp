@@ -24,20 +24,6 @@ This repository contains a Flask-based machine learning (ML) application that is
 
 2. Dockerize Your Application: Create a `Dockerfile` for containerizing your Flask application.
 
-   Example `Dockerfile`:
-   ```Dockerfile
-   FROM python:3.9-slim
-
-   WORKDIR /app
-
-   COPY requirements.txt requirements.txt
-   RUN pip install -r requirements.txt
-
-   COPY . .
-
-   CMD ["gunicorn", "-b", "0.0.0.0:80", "app:app"]
-   ```
-
 3. Create Docker image and Push to Azure Container Repository
   ```
   docker build -t bitscontainerregistry.azurecr.io/diabetes_prediction_app:latest .
