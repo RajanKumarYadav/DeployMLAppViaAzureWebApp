@@ -1,4 +1,4 @@
-# Deploy ML Flask App Via Azure WebApp
+# Deploy ML Flask App Via Azure WebApp and Azure Container Registry
 
 
 
@@ -10,9 +10,8 @@ This repository contains a Flask-based machine learning (ML) application that is
 ## Azure Setup & Prerequisites
 
 - Azure Account: Create an Azure account if you don't have one.
-- GitHub Repository: Your Flask application should be in a GitHub repository.
-- Create Resource Group: Create your Resource Group
-- Create Container Registry: For Holding Docker Images
+- Create Azure Resource Group: Create your Resource Group
+- Create Azure Container Registry: For Holding Docker Images
 - Go to Resources, Find Access Key, Enable Admin User and Copy password
 
 - Follow below step After Pushing the Image
